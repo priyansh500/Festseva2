@@ -76,11 +76,11 @@ function showAnnouncements() {
     announcementBox.innerHTML = announcements.map(msg => `<p>${msg}</p>`).join('');
 }
 
-// Simulate real-time announcement (set interval)
+// Simulate real-time announcement
 setInterval(() => {
     announcements.push(`New Update: ${new Date().toLocaleTimeString()} - Check event schedules!`);
     showAnnouncements();
-}, 5000); // Every 5 seconds
+}, 5000);
 
 // Initialize
 document.getElementById('registration-form').addEventListener('submit', registerUser);

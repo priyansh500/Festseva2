@@ -3,67 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Fest Management</title>
+    <title>FestSewa - Professional Event Management</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="background-animation"></div>
     <header>
-        <h1>Welcome to FestSewa 2025</h1>
+        <h1>FestSewa</h1>
         <nav>
-            <a href="#events">Events</a> |
-            <a href="#register">Register</a> |
-            <a href="#quiz">Quiz</a> |
-            <a href="#dashboard">Dashboard</a> |
+            <a href="#home">Home</a>
+            <a href="#register">Register</a>
+            <a href="#events">Events</a>
+            <a href="#dashboard">Dashboard</a>
             <a href="#announcements">Announcements</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <section id="events">
-        <h2>Event Listings</h2>
-        <div id="event-list"></div>
+    <section id="home">
+        <div class="hero">
+            <h2>Welcome to FestSewa</h2>
+            <p>Manage and attend college fests with ease.</p>
+        </div>
     </section>
 
     <section id="register">
-        <h2>Participant Registration</h2>
+        <h2>Register</h2>
+        <div class="role-selection">
+            <label><input type="radio" name="role" value="host" checked> Register as Host</label>
+            <label><input type="radio" name="role" value="attender"> Register as Attender</label>
+        </div>
         <form id="registration-form">
-            <label for="event-select">Select Event:</label>
-            <select id="event-select">
-                <!-- Populated by JavaScript -->
-            </select>
             <label for="name">Name:</label>
             <input type="text" id="name" required>
             <label for="email">Email:</label>
             <input type="email" id="email" required>
-            <button type="submit">Book Ticket</button>
+            <button type="submit">Register</button>
         </form>
         <p id="registration-message"></p>
     </section>
 
-    <section id="quiz">
-        <h2>Interactive Quiz</h2>
-        <div id="quiz-content">
-            <p>Question 1: Who was the 7th peshwa of marathas (A) Balaji Vishwanath, (B) Baji Rao 1</p>
-            <input type="radio" name="q1" value="A"> A<br>
-            <input type="radio" name="q1" value="B"> B<br>
-            <button onclick="submitQuiz()">Submit Quiz</button>
+    <section id="events">
+        <h2>Events</h2>
+        <!-- Attender: Add Event -->
+        <div id="add-event" style="display: none;">
+            <h3>Add New Event</h3>
+            <form id="add-event-form">
+                <label for="event-title">Event Title:</label>
+                <input type="text" id="event-title" required>
+                <label for="event-description">Description:</label>
+                <textarea id="event-description" required></textarea>
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" required>
+                <label for="event-tickets">Tickets Available:</label>
+                <input type="number" id="event-tickets" required>
+                <label for="event-host-email">Host Email:</label>
+                <input type="email" id="event-host-email" required>
+                <button type="submit">Add Event</button>
+            </form>
         </div>
-        <p id="quiz-score"></p>
+        <!-- Host: View and Search Events -->
+        <div id="view-events" style="display: none;">
+            <h3>Available Events</h3>
+            <input type="text" id="search-events" placeholder="Search events...">
+            <div id="event-list"></div>
+            <div id="event-details" style="display: none;">
+                <h3>Event Details</h3>
+                <div id="event-details-content"></div>
+                <button onclick="registerForEvent()">Register for this Event</button>
+            </div>
+        </div>
     </section>
 
     <section id="dashboard">
-        <h2>User Dashboard</h2>
+        <h2>Dashboard</h2>
         <div id="dashboard-content">
             <h3>Registered Events</h3>
             <ul id="registered-events"></ul>
-            <h3>Quiz Scores</h3>
-            <ul id="quiz-scores"></ul>
         </div>
     </section>
 
     <section id="announcements">
         <h2>Announcements</h2>
         <div id="announcement-box"></div>
+        <!-- Host can send announcements to contact Attender -->
+        <div id="send-announcement" style="display: none;">
+            <h3>Contact Attender via Announcement</h3>
+            <form id="announcement-form">
+                <label for="announcement-message">Message:</label>
+                <textarea id="announcement-message" required></textarea>
+                <button type="submit">Send Announcement</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="contact-name">Name:</label>
+            <input type="text" id="contact-name" required>
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" required>
+            <label for="contact-message">Message:</label>
+            <textarea id="contact-message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="contact-message"></p>
     </section>
 
     <script src="script.js"></script>

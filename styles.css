@@ -11,9 +11,12 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #f5f7fa;
+    background: url('background.jpg') no-repeat center center fixed; /* Replace with your image path or URL */
+    background-size: cover;
     color: #333;
     line-height: 1.6;
+    position: relative; /* Ensure proper layering */
+}
 }
 
 /* Header */
